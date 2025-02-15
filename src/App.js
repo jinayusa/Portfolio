@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowWelcome(false);
-    }, 3000); // Adjust delay as needed
+    }, 4500); // Adjust delay as needed
 
     return () => clearTimeout(timer);
   }, []);

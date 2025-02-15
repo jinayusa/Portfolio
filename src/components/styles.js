@@ -11,7 +11,11 @@ export const colors = {
   light: '#c9ada7',
   lightest: '#f2e9e4',
 };
-
+export const iconStyle = {
+  width: '60px',
+  height: '60px',
+  marginRight: '15px',
+};
 // Animations
 export const fadeIn = keyframes`
   from {
