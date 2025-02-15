@@ -56,12 +56,12 @@ const Phase1 = () => (
   <IntroWrapper>
     <IntroText>
       <AnimatedText delay="0.2s">
-        <h1 style={{ fontSize: '4rem', color: '#333', marginBottom: '20px' }}>
+        <h1 style={{ fontSize: '1.5rem', color: '#333', marginBottom: '20px' }}>
           The Spark – Childhood Curiosity
         </h1>
       </AnimatedText>
       <AnimatedText delay="0.4s">
-        <p style={{ fontSize: '2.5rem', color: '#555', lineHeight: '1.8' }}>
+        <p style={{ fontSize: '1.5rem', color: '#555', lineHeight: '1.8' }}>
           From an early age, my fascination with technology ignited countless questions. Playing soccer video games wasn’t just about fun; I marveled at the digital interactions between players and objects. The moment I wrote my first line of code to display my name on a terminal, I knew this spark would guide my path.
         </p>
       </AnimatedText>

@@ -2,15 +2,63 @@
 import backgroundImage from '../assets/images/background1.JPG';
 import styled, { keyframes } from 'styled-components';
 import { MdKeyboardArrowDown } from 'react-icons/md';
+import { createGlobalStyle } from 'styled-components'; // Added import for createGlobalStyle
 
 // Colors for reuse
 export const colors = {
-  darkest: '#22223b',
-  dark: '#4a4e69',
-  medium: '#9a8c98',
-  light: '#c9ada7',
-  lightest: '#f2e9e4',
+  darkest: '#2d3142',
+  dark: '#4f5d75',
+  medium: '#bfc0c0',
+  light: '#ffffff', // Or an off-white: #f8f9fa
+  lightest: '#ef8354',
 };
+// Global Styles Example
+export const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${colors.lightest};
+    color: ${colors.darkest};
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    color: ${colors.dark};
+    transition: color 0.3s ease;
+    &:hover {
+      color: ${colors.medium};
+    }
+  }
+`;
+
+// Main Container Style
+export const HomePageMainContainer = styled.div`
+  height: 930px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  background-image: linear-gradient(to right, ${colors.dark} 30%, ${colors.lighter || '#f0f0f0'} 30%); // Changed to to right
+  color: ${colors.lightest};
+
+  @media (max-width: 700px) {
+    display: block;
+    padding: 30px;
+  }
+`;
+
+// Button Styling Example
+export const StyledButton = styled.button`
+  background-color: ${colors.medium};
+  color: ${colors.darkest};
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: ${colors.light};
+  }
+`;
+
 export const iconStyle = {
   width: '60px',
   height: '60px',
@@ -49,7 +97,7 @@ export const infiniteScrollAnimation = `
     transform: translateX(0);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 `;
@@ -67,11 +115,12 @@ export const slowScrollAnimation = `
 
 // Card Component with Mobile Adjustments
 export const cardStyle = { // Changed to object
-  border: '1px solid #ccc',
+  border: `1px solid ${colors.light}`, // Use colors here
   borderRadius: '8px',
   overflow: 'hidden', // Ensure image stays within card bounds
   transition: 'transform 0.2s ease, box-shadow 0.2s ease',
   boxShadow: '0 5px 10px rgba(0, 0, 0, 1)', // Subtle shadow
+  backgroundColor: colors.lightest,
 
   '&:hover': {
     transform: 'translateY(-5px)',
@@ -89,8 +138,8 @@ export const detailsStyle = { // Changed to object
   bottom: 0,
   left: 0,
   width: '100%',
-  backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
-  color: 'white',
+  backgroundColor: `rgba(${parseInt(colors.darkest.slice(1, 3), 16)}, ${parseInt(colors.darkest.slice(3, 5), 16)}, ${parseInt(colors.darkest.slice(5, 7), 16)}, 0.5)`, // Use colors here
+  color: colors.lightest,
   padding: '10px',
   borderRadius: '0 0 8px 8px', // Round bottom corners
   opacity: 0, // Initially hidden
@@ -105,11 +154,11 @@ export const detailsStyle = { // Changed to object
 
   h3: {
     margin: 0,
-    fontSize: '1.2rem',
+    fontSize: '1.0rem',
   },
   p:{
     margin: 0,
-    fontSize: '0.9rem'
+    fontSize: '0.5rem'
   },
   '@media (max-width: 768px)': {
     h3: {
@@ -130,7 +179,7 @@ export const containerStyle = {
   justifyContent: 'flex-start',
   alignItems: 'flex-start',
   width: '100%',
-  backgroundColor: '#22223b',
+  backgroundColor: colors.dark,
   position: 'relative',
 };
 
@@ -149,8 +198,9 @@ export const fadeBackgroundStyle = {
 };
 
 export const textContainerStyle = {
+  marginTop: '60px',
   maxWidth: '50%',
-  color: '#f2e9e4',
+  color: colors.dark,
   textAlign: 'left',
   padding: '50px',
   '@media (max-width: 768px)': {
@@ -163,9 +213,9 @@ export const headerStyle = {
   position: 'fixed',
   top: 0,
   width: '100%',
-  backgroundColor: 'rgba(34, 34, 59, 0.85)',
+  backgroundColor: `rgba(${parseInt(colors.darkest.slice(1, 3), 16)}, ${parseInt(colors.darkest.slice(3, 5), 16)}, ${parseInt(colors.darkest.slice(5, 7), 16)}, 0.85)`, // Use colors here
   padding: '15px 20px',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.2)',
+  boxShadow: `0 4px 6px rgba(${parseInt(colors.darkest.slice(1, 3), 16)}, ${parseInt(colors.darkest.slice(3, 5), 16)}, ${parseInt(colors.darkest.slice(5, 7), 16)}, 0.2)`, // Shadow with color from palette
   zIndex: 1000,
   '@media (max-width: 768px)': {
     padding: '10px 15px',
@@ -230,8 +280,8 @@ export const skillsContainerStyle = {
 };
 
 export const skillCategoryStyle = {
-  fontSize: '2rem',
-  color: '#f2e9e4',
+  fontSize: '1.5rem',
+  color: colors.lightest,
   marginBottom: '10px',
   '@media (max-width: 768px)': {
     fontSize: '1.5rem',
@@ -251,7 +301,6 @@ export const skillItemStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   textAlign: 'center',
-  backgroundColor: 'rgba(255, 255, 255, 0.1)',
   borderRadius: '8px',
   padding: '10px',
   minWidth: '120px',
@@ -290,7 +339,7 @@ export const contactContainerStyle = {
 };
 
 export const contactHeadingStyle = {
-  fontSize: '2rem',
+  fontSize: '1.5rem',
   height: 'auto',
 
   textAlign: 'center',
@@ -364,7 +413,7 @@ export const socialLinksContainerStyle = {
 };
 
 export const socialLinkStyle = {
-  color: '#f2e9e4',
+  color: colors.lightest,
   fontSize: '1.5rem',
   textDecoration: 'none',
   '@media (max-width: 768px)': {
@@ -397,17 +446,6 @@ html {
 }
 `;
 
-export const homePageMainContainer = {
-  display: 'flex',
-  alignItems: 'center', /* Center vertically */
-  justifyContent: 'center', /* Center horizontally */
-  padding: '50px',
-  marginTop: '100px',
-  '@media (max-width: 768px)': {
-    padding: '30px',
-    marginTop: '80px',
-  },
-};
 
 // Animated Monitor Styles
 export const MonitorContainer = styled.div`
@@ -417,9 +455,10 @@ export const MonitorContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: transparent;
-  border: 1px solid black;
-
+  background-color: ${colors.darkest};
+  border: 1.5px solid black;
+  border-bottom: none;
+  border-radius: 5.5px 5.5px 0px 0px;
   @media (max-width: 768px) {
     width: 300px;
     height: 170px;
@@ -446,37 +485,45 @@ export const Body = styled.div`
   width: 100%;
   height: 40px;
   background-color: ${colors.medium};
-  border-top: 2px solid ${colors.dark};
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  border: 1.5px solid black;
+  border-top: 0.8px solid black;
+  border-radius: 0px 0px 5.5px 5.5px;
 `;
 
 export const Stand = styled.div`
-  width: 100px;
+  width: 60px;
   height: 40px;
-  background-color: ${colors.medium};
-  border-radius: 10px 10px 0 0;
-  margin-top: -15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 125px;
+  background-color: ${colors.medium}; /* Keep your color variable */
+  opacity: 0.7; /* Adjust opacity for lighter appearance */
+  clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+  margin-top: -10px;
+  margin-left: 140px;
+  /* Add margin or padding to prevent overlap */
+  margin-right: 20px; /* Example: Add right margin */
+  /* OR */
+  padding-right: 20px; /* Example: Add right padding */
 
   @media (max-width: 768px) {
     margin-left: 100px;
   }
 `;
-
 export const StandBase = styled.div`
-  width: 60%;
-  height: 15px;
-  background-color: ${colors.light};
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 150px; /* Adjust length */
+  height: 5px; /* Adjust thickness */
+  background-color: ${colors.medium}; /* Or remove for transparent line */
+  margin-top: 0px;
+  margin-left: 96px;
+ border: 1.5px solid black;
+  border-top: 0.8px solid black;
+  border-radius: 0px 0px 5.5px 5.5px;
+  @media (max-width: 768px) {
+    margin-left: 100px;
+  }
 `;
+
 
 export const Glow = styled.div`
   position: absolute;
@@ -507,7 +554,7 @@ export const CodeLine = styled.p`
 // About Page Styles
 export const aboutSectionStyle = styled.section`
   padding: 50px;
-  background-color: #f8f8f8;
+  background-color: ${colors.lightest}; // Example
   font-family: sans-serif;
 
   @media (max-width: 768px) {
@@ -519,8 +566,8 @@ export const aboutContentStyle = styled.div`
   max-width: 960px;
   margin: 0 auto;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  boxShadow: 0 0 10px rgba(${parseInt(colors.darkest.slice(1, 3), 16)}, ${parseInt(colors.darkest.slice(3, 5), 16)}, ${parseInt(colors.darkest.slice(5, 7), 16)}, 0.1);
+  background-color: ${colors.lightest}; // Example
   border-radius: 8px;
 
   @media (max-width: 768px) {
@@ -618,7 +665,7 @@ export const LiquidBackground = styled.div`
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(135deg, #0077be, #ff4081, #ffb300);
+  background: linear-gradient(135deg, ${colors.dark}, ${colors.medium}, ${colors.light}); // Example
   background-size: 200% 200%;
   animation: liquidEffect 10s ease infinite;
   @keyframes liquidEffect {
@@ -688,20 +735,20 @@ export const ProfileImage = styled.img`
 export const ContentSection = styled.div`
   margin-bottom: 60px;
   h2 {
-    font-size: 3.5rem;
+    font-size: 1.5rem;
     color: #333;
     margin-bottom: 15px;
     @media (max-width: 768px) {
-      font-size: 2.5rem;
+      font-size: 0.5rem;
     }
   }
   p,
   ul {
-    font-size: 2.3rem;
+    font-size: 1.5rem;
     color: #555;
     line-height: 1.8;
     @media (max-width: 768px) {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
     }
   }
   ul {
@@ -718,7 +765,7 @@ export const RightScrollIndicator = styled.div`
   left: 50%;
   transform: translateY(-50%);
   animation: fadePulse 2s ease-in-out infinite alternate;
-  font-size: 2.3rem;
+  font-size: 1.3rem;
   color: rgba(34, 34, 59, 0.85);
   cursor: pointer;
   z-index: 1000;
@@ -733,14 +780,14 @@ export const RightScrollIndicator = styled.div`
   }
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 `;
 
 export const DownArrow = styled(MdKeyboardArrowDown)`
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 `;
 
@@ -765,7 +812,7 @@ export const ContactSection = styled.section`
 `;
 
 export const ContactHeading = styled.h2`
-  font-size: 2rem;
+  font-size: 1rem;
   margin-bottom: 15px;
   text-align: center;
 
@@ -792,7 +839,7 @@ export const MessageForm = styled.form`
 `;
 
 export const InputField = styled.input`
-  background-color: ${colors.medium};
+  background-color: ${colors.light};
   color: ${colors.darkest};
   border: none;
   padding: 10px;
@@ -857,5 +904,157 @@ export const SocialLink = styled.a`
 
   @media (max-width: 768px) {
     font-size: 1.3rem;
+  }
+`;
+
+export const infiniteScrollStyle = {
+  display: 'flex',
+  animation: 'scroll 20s linear infinite', // Adjust the duration as needed
+};
+
+export const headingStyle = {
+  fontSize: '2rem',
+  fontWeight: 'bold',
+  marginBottom: '20px',
+  color: colors.darkest,
+  fontFamily: 'Modernica', // Corrected property name
+  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', 
+};
+
+export const paragraphStyle = {
+  fontSize: '2rem',
+  lineHeight: '1.5',
+  color: colors.darkest,
+  marginBottom: '20px',
+  fontFamily: 'Heartwell', // Applied Modernica font
+  letterSpacing: '1px', 
+};
+
+export const subParagraphStyle = {
+  fontSize: '1.5rem',
+  lineHeight: '1.5',
+  color: colors.darkest,
+  fontFamily: 'Heartwell', // Applied Modernica font
+  fontStyle: 'italic', 
+};
+
+
+export const spotlightStyle = {
+  position: 'absolute',
+  top: 0,
+  left: '50%',
+  width: '400px',
+  height: '100%',
+  background: 'radial-gradient(circle, rgba(150, 120, 220, 0.8) 0%, rgba(0, 0, 0, 0) 80%)',
+  transform: 'translateX(-50%)',
+  pointerEvents: 'none',
+  zIndex: 1,
+  opacity: 0.7,
+  filter: 'blur(30px)',
+  animation: 'fadeGlow 2s ease-in-out infinite alternate',
+};
+
+// Add keyframes for soft pulsing effect
+export const fadeGlow = `
+@keyframes fadeGlow {
+  0% { opacity: 0.5; }
+  100% { opacity: 0.8; }
+}
+`;
+export const hangingLightStyle = {
+  position: 'absolute',
+  top: '-150px',
+  left: '50%',
+  width: '300px',
+  height: '500px',
+  background: 'radial-gradient(circle, rgba(200,170,255,0.6) 0%, rgba(0,0,0,0) 80%)',
+  transform: 'translateX(-50%)',
+  pointerEvents: 'none',
+  zIndex: 2,
+  opacity: 0.7,
+  filter: 'blur(30px)',
+};
+
+
+// Lamp and Light Styles
+export const lampContainerStyle = {
+  position: 'absolute',
+  top: '-320px',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  zIndex: 3,
+};
+
+export const lampStyle = {
+  position: 'relative', // Needed for absolute positioning of the bulb
+  width: '80px',
+  height: '110px',
+  backgroundColor: '#D4AF37',
+  background: 'linear-gradient(145deg, #D4AF37, #B8860B)', // Gradient for metallic effect
+  borderRadius: '50% 50% 0 0',
+  boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.3)', // Deeper shadow for depth
+  border: '2px solid #B8860B', // Add a border for more definition
+};
+
+export const lampWireStyle = {
+  width: '2px',
+  height: '220px',
+  backgroundColor: '#A0522D',
+  boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.2)', // Shadow for the wire
+  marginTop: '-70px',
+};
+
+export const lightBeamStyle = {
+  position: 'absolute',
+  top: '150px',
+  width: '0',
+  height: '0',
+  borderLeft: '150px solid transparent',
+  borderRight: '150px solid transparent',
+  borderBottom: '400px solid rgba(255, 255, 180, 0.6)',
+  filter: 'blur(25px)',
+  opacity: 0.2,
+  pointerEvents: 'none',
+  zIndex: 2,
+  transition: 'opacity 0.5s ease-in-out',
+  animation: 'flicker 2s infinite', // Add a flicker animation
+};
+
+// Bulb Style
+export const bulbStyle = {
+  position: 'absolute',
+  top: '250px', // Adjust vertical position within the lamp
+  left: '50%',
+  transform: 'translateX(-50%)',
+  width: '20px',  // Adjust size as needed
+  height: '20px', // Adjust size as needed
+  borderRadius: '50%',
+  backgroundColor: 'white', // Or a slightly warm white: #f8f0e3
+  background: 'radial-gradient(circle, #ffffff, #f8f0e3)', // Radial gradient for bulb glow
+  boxShadow: '0 0 15px 10px rgba(255, 255, 224, 0.8)', // Stronger glow
+  animation: 'glow 1.5s infinite alternate', // Add a glow animation
+};
+
+// Keyframes for animations
+export const globalStyles = `
+  @keyframes flicker {
+    0%, 100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 10px 5px rgba(255, 255, 224, 0.8);
+    }
+    100% {
+      box-shadow: 0 0 20px 15px rgba(255, 255, 224, 0.9);
+    }
   }
 `;

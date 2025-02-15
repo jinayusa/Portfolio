@@ -37,6 +37,11 @@ function Header() {
               </Link>
             </li>
             <li style={navItemStyle}>
+              <Link to="/experience" style={navLinkStyle}>
+                Experience
+              </Link>
+            </li>
+            <li style={navItemStyle}>
               <Link to="/projects" style={navLinkStyle}>
                 Projects
               </Link>

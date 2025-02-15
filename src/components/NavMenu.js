@@ -1,6 +1,6 @@
 // NavMenu.js
 import React from 'react';
-import { FaHome, FaUser, FaEnvelope} from 'react-icons/fa'; // Import icons
+import { FaHome, FaUser, FaEnvelope, FaBriefcase } from 'react-icons/fa'; // Import icons
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import {
   menuStyle,
@@ -38,8 +38,6 @@ function NavMenu({ handleMenuClick }) {
     }
   };
   const handleResumeClick = () => {
-    // This function will handle displaying the resume
-    // For example, you can open the resume in a new tab or display a modal
     window.open('../assets/pdf/Resumee.pdf', '_blank'); // Replace with the actual path to your resume
   };
   return (
@@ -67,17 +65,29 @@ function NavMenu({ handleMenuClick }) {
           </a>
         </li>
         <li style={menuItemStyle}>
-        <a
-              href="#about" // Keep the href for accessibility
-              style={menuLinkStyle}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onClick={(e) => {
-                e.preventDefault(); // Prevent default link behavior
-                scrollToSection('about');
-              }}
-            >
+          <a
+            href="#about"
+            style={menuLinkStyle}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('about');
+            }}
+          >
             <FaUser style={{ marginRight: '8px' }} /> About
+            <span className="underline" style={underlineStyle}></span>
+          </a>
+        </li>
+        <li style={menuItemStyle}>
+          <a 
+            href="#experience" 
+            style={menuLinkStyle} 
+            onMouseEnter={handleMouseEnter} 
+            onMouseLeave={handleMouseLeave}
+            onClick={() => handleMenuClick('experience')}
+          >
+            <FaBriefcase style={{ marginRight: '8px' }} /> Experience
             <span className="underline" style={underlineStyle}></span>
           </a>
         </li>

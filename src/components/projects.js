@@ -43,7 +43,7 @@ const ProjectSection = ({ project, reverse }) => (
   <ProjectSectionWrapper reverse={reverse}>
     <div style={{ flex: 1, padding: '20px' }}>
       <AnimatedText delay="0.2s">
-        <h2>{project.title}</h2>
+        <h3>{project.title}</h3>
       </AnimatedText>
       <AnimatedText delay="0.4s">
         <p>{project.introduction}</p>

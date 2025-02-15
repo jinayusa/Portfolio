@@ -5,6 +5,7 @@ import About from './components/AboutMe';
 import Projects from './components/projects';
 import Contact from './components/contact';
 import Header from './components/header';
+import Experience from './components/experience';
 import WelcomePage from './components/WelcomePage'; // Import WelcomePage
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/experience" element={<Experience />} />
               {/* Redirect to home if path doesn't match */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

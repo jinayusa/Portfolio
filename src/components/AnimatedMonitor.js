@@ -9,6 +9,11 @@ import {
   Glow,
   Cursor,
   CodeLine,
+  lampContainerStyle,
+  lampStyle,
+  lampWireStyle,
+  lightBeamStyle,
+  bulbStyle,
 } from './styles';
 
 const codeSnippets = {
@@ -84,6 +89,12 @@ function AnimatedMonitor() {
     <div>
     <MonitorContainer>
       <Glow />
+      <div style={lampContainerStyle}>
+        <div style={lampWireStyle}></div>
+        <div style={bulbStyle}></div>
+        <div style={lampStyle}></div>
+        <div style={lightBeamStyle}></div>
+      </div>
       <Screen ref={screenRef}>
         {renderCodeLines()}
       </Screen>
@@ -91,8 +102,8 @@ function AnimatedMonitor() {
     </MonitorContainer>
     <Body />
     <Stand>
-      <StandBase />
     </Stand>
+    <StandBase></StandBase>
     </div>
   );
 }
