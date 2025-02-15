@@ -1,6 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { LiquidBackground, AnimatedDiv, Section, Container, IntroWrapper, IntroText, ProfileImage, ContentSection, RightScrollIndicator, DownArrow } from './styles';
+import { 
+  LiquidBackground, 
+  AnimatedDiv, 
+  Section, 
+  Container, 
+  IntroWrapper, 
+  IntroText, 
+  ProfileImage, 
+  ContentSection, 
+  RightScrollIndicator, 
+  DownArrow 
+} from './styles';
 import profilePic from '../assets/images/abc.JPG';
 import knowledge from '../assets/images/Others/knowledge.jpg';
 import Experience from '../assets/images/Others/Experience.jpg';
@@ -11,7 +22,11 @@ import Future from '../assets/images/Others/Future.jpg';
 const AnimatedText = ({ children, delay = '0s' }) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
+  
   useEffect(() => {
+    const element = ref.current; // copy ref.current to a local variable
+    if (!element) return;
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -21,11 +36,15 @@ const AnimatedText = ({ children, delay = '0s' }) => {
       },
       { threshold: 0.1 }
     );
-    if (ref.current) observer.observe(ref.current);
+    
+    observer.observe(element);
+    
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      // Use the copied element in the cleanup function
+      observer.unobserve(element);
     };
   }, []);
+  
   return (
     <AnimatedDiv ref={ref} visible={visible} delay={delay}>
       {children}
@@ -59,6 +78,7 @@ const PhaseSectionWrapper = styled(ContentSection)`
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
   align-items: center;
   margin-bottom: 60px;
+  
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -137,6 +157,7 @@ const Phase6 = () => (
 
 const About = () => {
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -148,9 +169,11 @@ const About = () => {
         setShowScrollIndicator(true);
       }
     };
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
   return (
     <Section>
       <LiquidBackground />

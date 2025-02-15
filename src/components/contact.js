@@ -1,17 +1,93 @@
 import React, { useState } from 'react';
-import {
-  contactContainerStyle,
-  contactHeadingStyle,
-  contactTextStyle,
-  messageFormStyle,
-  inputFieldStyle,
-  messageInputStyle,
-  sendButtonStyle,
-  socialLinksContainerStyle,
-  socialLinkStyle
-} from './styles';
-
 import { FaGithub, FaLinkedin, FaInstagram, FaPaperPlane } from 'react-icons/fa';
+import styled from 'styled-components';
+
+// Styled Components
+const Section = styled.section`
+  width: 1470px;
+  height: 800px;
+  padding: 80px 20px;
+  background-color: #2a2d3e;
+  color: #fff;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
+
+const Heading = styled.h2`
+  margin-top: 30px;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #f2a365;
+`;
+
+const ContactForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-width: 450px;
+  margin: 0 auto;
+`;
+
+const Input = styled.input`
+  padding: 12px;
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #f2a365;
+  outline: none;
+  transition: border-color 0.3s;
+  
+  &:focus {
+    border-color: #e07a5f;
+  }
+`;
+
+const Textarea = styled.textarea`
+  ${Input}
+  resize: none;
+  height: 120px;
+`;
+
+const Button = styled.button`
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #e07a5f;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #eb5e28;
+  }
+`;
+
+const SocialLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+`;
+
+const SocialIcon = styled.a`
+  font-size: 1.8rem;
+  color: #f2a365;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #eb5e28;
+  }
+`;
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -23,85 +99,54 @@ function Contact() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.email || !formData.subject || !formData.message) {
-      alert("All fields are required!");
-      return;
-    }
-  
-    try {
-      const response = await fetch("http://localhost:5001/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      if (response.ok) {
-        alert("Message sent successfully!");
-        setFormData({ email: '', subject: '', message: '' });
-      } else {
-        alert("Failed to send message.");
-      }
-    } catch (error) {
-      alert("Error sending message.");
-    }
+    alert("Your message has been sent!");
+    setFormData({ email: '', subject: '', message: '' });
   };
-  
-  
-  return (
-    <section id="contact" style={contactContainerStyle}>
-      <h2 style={contactHeadingStyle}>Contact Me</h2>
-      <p style={contactTextStyle}>📧 jshah86@asu.edu</p>
-      <p style={contactTextStyle}>📧 jinayusa@gmail.com</p>
 
-      <form style={messageFormStyle} onSubmit={handleSubmit}>
-        <input
+  return (
+    <Section>
+      <Heading>Contact Me</Heading>
+      <ContactForm onSubmit={handleSubmit}>
+        <Input
           type="email"
           name="email"
-          style={inputFieldStyle}
           placeholder="Your Email"
           value={formData.email}
           onChange={handleChange}
           required
         />
-        <input
+        <Input
           type="text"
           name="subject"
-          style={inputFieldStyle}
           placeholder="Subject"
           value={formData.subject}
           onChange={handleChange}
           required
         />
-        <textarea
+        <Textarea
           name="message"
-          style={messageInputStyle}
-          rows="3"
-          placeholder="Write your message..."
+          placeholder="Your Message"
           value={formData.message}
           onChange={handleChange}
           required
-        ></textarea>
-        <button type="submit" style={sendButtonStyle}>
-          Send <FaPaperPlane />
-        </button>
-      </form>
-
-      <div style={socialLinksContainerStyle}>
-        <a href="https://github.com/jinayshah" target="_blank" rel="noopener noreferrer" style={socialLinkStyle}>
-          <FaGithub /> GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/jinayshah" target="_blank" rel="noopener noreferrer" style={socialLinkStyle}>
-          <FaLinkedin /> LinkedIn
-        </a>
-        <a href="https://www.instagram.com/jinay.shah" target="_blank" rel="noopener noreferrer" style={socialLinkStyle}>
-          <FaInstagram /> Instagram
-        </a>
-      </div>
-    </section>
+        />
+        <Button type="submit">Send <FaPaperPlane /></Button>
+      </ContactForm>
+      <SocialLinks>
+        <SocialIcon href="https://github.com/jinayusa" target="_blank" rel="noopener noreferrer">
+          <FaGithub />
+        </SocialIcon>
+        <SocialIcon href="https://www.linkedin.com/in/jinay2" target="_blank" rel="noopener noreferrer">
+          <FaLinkedin />
+        </SocialIcon>
+        <SocialIcon href="https://www.instagram.com/_jinshah_" target="_blank" rel="noopener noreferrer">
+          <FaInstagram />
+        </SocialIcon>
+      </SocialLinks>
+    </Section>
   );
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link component
+import { Link } from 'react-router-dom';
 import {
   headerStyle,
   navStyle,
@@ -14,7 +14,7 @@ function Header() {
       <nav style={navStyle}>
         <ul style={navListStyle}>
           <li style={navItemStyle}>
-            <Link to="/" style={navLinkStyle}> {/* Use Link for navigation */}
+            <Link to="/" style={navLinkStyle}>
               Home
             </Link>
           </li>
@@ -33,6 +33,17 @@ function Header() {
               Contact
             </Link>
           </li>
+          <li style={navItemStyle}>
+  <a 
+    href={process.env.PUBLIC_URL + '/JResume.pdf'} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    style={navLinkStyle}
+  >
+    Resume
+  </a>
+</li>
+
         </ul>
       </nav>
     </header>
