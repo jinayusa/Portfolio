@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.40b334cc.css",
-    "main.js": "/Portfolio/static/js/main.bffa01ed.js",
+    "main.css": "/Portfolio/static/css/main.e5153045.css",
+    "main.js": "/Portfolio/static/js/main.92af99fe.js",
     "static/js/453.41811d64.chunk.js": "/Portfolio/static/js/453.41811d64.chunk.js",
     "static/media/icon.PNG": "/Portfolio/static/media/icon.621af788bd9da18eeacf.PNG",
     "static/media/background1.JPG": "/Portfolio/static/media/background1.b951c46f4b3576dfd3a2.JPG",
@@ -59,12 +59,12 @@
     "static/media/DecisionTheater.jpg": "/Portfolio/static/media/DecisionTheater.1e159c53429e2d97616b.jpg",
     "static/media/JavaScript.png": "/Portfolio/static/media/JavaScript.266bd9fb2663dcc057b4.png",
     "index.html": "/Portfolio/index.html",
-    "main.40b334cc.css.map": "/Portfolio/static/css/main.40b334cc.css.map",
-    "main.bffa01ed.js.map": "/Portfolio/static/js/main.bffa01ed.js.map",
+    "main.e5153045.css.map": "/Portfolio/static/css/main.e5153045.css.map",
+    "main.92af99fe.js.map": "/Portfolio/static/js/main.92af99fe.js.map",
     "453.41811d64.chunk.js.map": "/Portfolio/static/js/453.41811d64.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.40b334cc.css",
-    "static/js/main.bffa01ed.js"
+    "static/css/main.e5153045.css",
+    "static/js/main.92af99fe.js"
   ]
 }
