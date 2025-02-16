@@ -80,8 +80,8 @@ function Home() {
             👋 Hi, I’m Jinay Shah
           </h6>
           <p style={paragraphStyle}>
-            A passionate <b>Software Engineer & AI Enthusiast</b> currently pursuing my <b>Master’s in Information Technology</b> at <b>Arizona State University</b>.
-            I specialize in <b>AI, full-stack development, and cloud technologies</b>, building <b>scalable and impactful solutions</b>.
+            A passionate Software Engineer & AI Enthusiast currently pursuing my Master’s in Information Technology at Arizona State University.
+            I specialize in AI, full-stack development, and cloud technologies, building scalable and impactful solutions.
           </p>
           <p style={subParagraphStyle}>
             I'm eager to connect and collaborate on innovative projects.  Feel free to reach out!

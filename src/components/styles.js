@@ -198,7 +198,6 @@ export const fadeBackgroundStyle = {
 };
 
 export const textContainerStyle = {
-  marginTop: '60px',
   maxWidth: '50%',
   color: colors.dark,
   textAlign: 'left',
